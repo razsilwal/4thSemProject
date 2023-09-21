@@ -45,6 +45,19 @@ include 'components/wishlist_cart.php';
 
             <div class="swiper-wrapper">
 
+            <div class="swiper-slide slide">
+                  <div class="image">
+                     <img src="images/a4.jpg" alt="">
+                  </div>
+                  <div class="content">
+                     <span>upto 50% off</span>
+                     <h2>
+                        <p> Double A 100 GSM A4 Photo Copy Paper(200 Sheets per Pack)</p>
+                     </h2>
+                     <a href="shop.php" class="btn">Buy now</a>
+                  </div>
+               </div>
+
                <div class="swiper-slide slide">
                   <div class="image">
                      <img src="images/seto-dharti.webp" alt="">
@@ -54,18 +67,18 @@ include 'components/wishlist_cart.php';
                      <h2>
                         <p writeit-loop writeit-animate> Seto Dharti - Amar Neupane * Madan Puraskar Winner 2068 BS (bestseller)</p>
                      </h2>
-                     <a href="shop.php" class="btn">shop now</a>
+                     <a href="shop.php" class="btn">Buy now</a>
                   </div>
                </div>
 
                <div class="swiper-slide slide">
                   <div class="image">
-                     <img src="images/home-img-2.jpg" alt="">
+                     <img src="images/ijoriya.jpg" alt="ijoriya">
                   </div>
                   <div class="content">
-                     <span>upto 50% off</span>
-                     <h3>latest Bag</h3>
-                     <a href="shop.php" class="btn">shop now</a>
+                     <span>upto 25% off</span>
+                     <h3>latest book</h3>
+                     <a href="shop.php" class="btn">Buy now</a>
                   </div>
                </div>
 
@@ -74,9 +87,9 @@ include 'components/wishlist_cart.php';
                      <img src="images/home-img-3.webp" alt="">
                   </div>
                   <div class="content">
-                     <span>upto 50% off</span>
+                     <span>upto 15% off</span>
                      <h3>latest Notebooks</h3>
-                     <a href="shop.php" class="btn">shop now</a>
+                     <a href="shop.php" class="btn">Buy now</a>
                   </div>
                </div>
 

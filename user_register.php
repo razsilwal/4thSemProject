@@ -44,7 +44,7 @@ if (isset($_POST['submit'])) {
 <!DOCTYPE html>
 <html lang="en">
 
-<!--<script>
+<script>
    function uname_validation() {
       var name = document.forms["form"]["name"].value;
       var nameformat = /^[a-zA-Z\s]*$/;
@@ -58,7 +58,7 @@ if (isset($_POST['submit'])) {
          document.getElementById('nerror').innerHTML = "";
       }
    }
-</script> -->
+</script> 
 
 
 <head>

@@ -20,15 +20,15 @@
 
       <div class="box">
          <h3>contact us</h3>
-         <a href="tel:1234567890"><i class="fas fa-phone"></i> +977 9867872978</a>
-         <a href="tel:11122233333"><i class="fas fa-phone"></i> +977 9849202202</a>
-         <a href="mailto:shaikh@gmail.com"><i class="fas fa-envelope"></i> Kumarbhetwal25@gmail.com</a>
+         <a href="tel:1234567890"><i class="fas fa-phone"></i> +977 9865247946</a>
+         <a href="tel:11122233333"><i class="fas fa-phone"></i> +977 9869892755</a>
+         <a href="mailto:shaikh@gmail.com"><i class="fas fa-envelope"></i> sabalsilwal51@gmail.com.com</a>
          <a href="https://www.google.com/myplace"><i class="fas fa-map-marker-alt"></i> Chitwan, Nepal </a>
       </div>
 
       <div class="box">
          <h3>follow us</h3>
-         <a href="https://www.facebook.com/kumarbhetwal25/"><i class="fab fa-facebook-f"></i>Facebook</a>
+         <a href="https://www.facebook.com/profile.php?id=100080216374623"><i class="fab fa-facebook-f"></i>Facebook</a>
          <a href="#"><i class="fab fa-twitter"></i>Twitter</a>
          <a href="#"><i class="fab fa-instagram"></i>Instagram</a>
          <!-- <a href="#"><i class="fab fa-linkedin"></i>Linkedin</a> -->
@@ -36,6 +36,6 @@
 
    </section>
 
-   <div class="credit">&copy; copyright @ <?= date('Y'); ?> by <span>MR Kumar Chaudhary & MRS Durga Devi Kandel</span> | all rights reserved!</div>
+   <div class="credit">&copy; copyright @ <?= date('Y'); ?> by <span>Mr. Raj Krishna Silwal & Mr. Roshan Gajurel</span> | all rights reserved!</div>
 
 </footer>

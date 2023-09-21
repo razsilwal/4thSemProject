@@ -19,20 +19,17 @@ if (isset($_POST['order'])) {
    $number = filter_var($number, FILTER_SANITIZE_STRING);
    $email = $_POST['email'];
    $email = filter_var($email, FILTER_SANITIZE_STRING);
-   $method = $_POST['method'];
-   $method = filter_var($method, FILTER_SANITIZE_STRING);
    $address = 'flat no. ' . $_POST['flat'] . ', ' . $_POST['street'] . ', ' . $_POST['city'] . ', ' . $_POST['state'] . ', ' . $_POST['country'] . ' - ' . $_POST['pin_code'];
    $address = filter_var($address, FILTER_SANITIZE_STRING);
    $total_products = $_POST['total_products'];
    $total_price = $_POST['total_price'];
-
    $check_cart = $conn->prepare("SELECT * FROM `cart` WHERE user_id = ?");
    $check_cart->execute([$user_id]);
 
    if ($check_cart->rowCount() > 0) {
 
-      $insert_order = $conn->prepare("INSERT INTO `orders`(user_id, name, number, email, method, address, total_products, total_price) VALUES(?,?,?,?,?,?,?,?)");
-      $insert_order->execute([$user_id, $name, $number, $email, $method, $address, $total_products, $total_price]);
+      $insert_order = $conn->prepare("INSERT INTO `orders`(user_id, name, number, email, address, total_products, total_price) VALUES(?,?,?,?,?,?,?,?)");
+      $insert_order->execute([$user_id, $name, $number, $email, $address, $total_products, $total_price]);
 
       $delete_cart = $conn->prepare("DELETE FROM `cart` WHERE user_id = ?");
       $delete_cart->execute([$user_id]);
@@ -41,8 +38,9 @@ if (isset($_POST['order'])) {
    } else {
       $message[] = 'your cart is empty';
    }
-}
 
+
+}
 ?>
 
 <!DOCTYPE html>
@@ -57,10 +55,7 @@ if (isset($_POST['order'])) {
    <!-- font awesome cdn link  -->
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
-   <!-- custom css file link  -->
-   <link rel="stylesheet" href="css/style.css">
-   <script src="https://khalti.s3.ap-south-1.amazonaws.com/KPG/dist/2020.12.17.0.0.0/khalti-checkout.iffe.js"></script>
-
+   
 </head>
 
 <body>
@@ -153,107 +148,12 @@ if (isset($_POST['order'])) {
 
    </section>
 
-   <?php
-         $args = http_build_query(array(
-             'token' => $request->token,
-             'amount'  => 1000
-          ));
-
-          $url = "https://khalti.com/api/v2/payment/verify/";
-
-          # Make the call using API.
-          $ch = curl_init();
-          curl_setopt($ch, CURLOPT_URL, $url);
-          curl_setopt($ch, CURLOPT_POST, 1);
-          curl_setopt($ch, CURLOPT_POSTFIELDS, $args);
-          curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-
-          $headers = ['Authorization: Key test_secret_key_75e2a1f970ba44ed933a5383475eef0b'];
-          curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-
-         // // Response
-          $response = curl_exec($ch);
-          $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-          curl_close($ch);
-
-          if ($status_code == 200) {
-             return response()->json([
-                'success' => 1,
-                'redirectto' => '/successpage',
-             ]);
-          } else {
-             return response()->json([
-                'message' => 'Something Went Wrong',
-             ]);
-          }
-         ?> 
-
-
+   
+        
    <?php include 'components/footer.php'; ?>
 
    <script src="js/script.js"></script>
 
-   <script>
-      var config = {
-         // replace the publicKey with yours
-         // "publicKey": "test_public_key_dc74e0fd57cb46cd93832aee0a390234",
-         "publicKey": "test_public_key_99697f8fd7fc41e8b922cb5f84cf4e82",
-         "productIdentity": "1234567890",
-         "productName": "Dragon",
-         "productUrl": "http://gameofthrones.wikia.com/wiki/Dragons",
-         "paymentPreference": [
-            "KHALTI",
-            "EBANKING",
-            "MOBILE_BANKING",
-            "CONNECT_IPS",
-            "SCT",
-         ],
-         "eventHandler": {
-            onSuccess(payload) {
-               // hit merchant api for initiating verfication
-               console.log(payload);
-               if (payload.idx) {
-                  $.ajaxSetup({
-                     headers: {
-                        'X-CSRF-TOKEN': '{{csrf_token()}}',
-                     }
-                  });
-
-
-                  $.ajax({
-                     method: 'POST',
-                     url: "{{route('khalti.verify')}}",
-                     data: payload,
-                     success: function(response) {
-                        console.log('successfully paid');
-                        // window.location = response.redirectto; 
-                     },
-                     error: function(data) {
-                        console.log(data.message);
-                     }
-                  });
-               }
-
-
-            },
-            onError(error) {
-               console.log(error);
-            },
-            onClose() {
-               console.log('widget is closing');
-            }
-         }
-      };
-
-      var checkout = new KhaltiCheckout(config);
-      var btn = document.getElementById("payment-button");
-      btn.onclick = function() {
-         // minimum transaction amount must be 10, i.e 1000 in paisa.
-         checkout.show({
-            amount: 1000
-         });
-      }
-   </script>
 
 </body>
 
